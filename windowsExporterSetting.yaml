@@ -1,0 +1,7 @@
+collectors:
+  enabled: cpu,cpu_info,cs,iis,logical_disk,memory,mssql,net,os,process,service,system,tcp,thermalzone,diskdrive
+collector:
+  service:
+    services-where: "Name='windows_exporter'"
+log:
+  level: warn
