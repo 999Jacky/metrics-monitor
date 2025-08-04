@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  vmagent:
+    image: victoriametrics/vmagent:latest
+    container_name: vmagent
+    ports:
+      - "8429:8429"  # Web UI 預設 port
+    volumes:
+      - ./vmagent.yaml:/etc/vmagent.yaml:ro
+    command:
+      - "--promscrape.config=/etc/vmagent.yaml"
+      - "--remoteWrite.url=http://{ip}:8428/api/v1/write"
+      - "--remoteWrite.label=job=local"
+      - "--remoteWrite.label=instance=server"
+      - "--remoteWrite.label=site=12345"

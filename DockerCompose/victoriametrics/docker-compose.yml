@@ -1,0 +1,28 @@
+services:
+  victoriametrics:
+    image: victoriametrics/victoria-metrics
+    container_name: victoriametrics
+    ports:
+      - "8428:8428"
+    restart: unless-stopped
+    volumes:
+      - vmdata:/victoria-metrics-data
+    command:
+      - '-retentionPeriod=365d'
+      - '-selfScrapeInterval=1m'
+
+  nginx:
+    image: nginx:alpine
+    container_name: vm-nginx-proxy
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./htpasswd:/etc/nginx/.htpasswd:ro
+    depends_on:
+      - victoriametrics
+    restart: unless-stopped
+
+volumes:
+  vmdata:
+

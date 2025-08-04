@@ -14,13 +14,20 @@
 nssm remove windows_exporter
 ```
 
-#### 密碼
-* 找線上bcrypt產生器,輸入密碼後貼到 Auth.yaml
-``` text
-basic_auth_users:
-  userName1: 產生hash
-  userName2: 產生hash2
-```
-* 這裡的密碼是要填到 prometheus的yaml設定檔裡,hash貼進windows_exporter設定檔裡
+[//]: # (#### 密碼)
+
+[//]: # (* 找線上bcrypt產生器,輸入密碼後貼到 Auth.yaml)
+
+[//]: # (``` text)
+
+[//]: # (basic_auth_users:)
+
+[//]: # (  userName1: 產生hash)
+
+[//]: # (  userName2: 產生hash2)
+
+[//]: # (```)
+
+[//]: # (* 這裡的密碼是要填到 prometheus的yaml設定檔裡,hash貼進windows_exporter設定檔裡)
 
 
